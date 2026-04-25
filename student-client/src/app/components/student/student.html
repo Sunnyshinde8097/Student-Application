@@ -1,0 +1,43 @@
+<div class="container mt-4">
+  <h2 class="mb-4 text-primary">Student Management</h2>
+
+  <!-- Add Student Form -->
+  <form (ngSubmit)="addStudent()" class="row g-3 mb-4">
+    <div class="col-md-4">
+      <input [(ngModel)]="newStudent.studentName" name="name" class="form-control" placeholder="Name" required />
+    </div>
+
+    <div class="col-md-3">
+      <input [(ngModel)]="newStudent.MobileNo" name="mobile" type="tel" class="form-control" placeholder="Mobile No" required />
+    </div>
+    <div class="col-md-3">
+      <input [(ngModel)]="newStudent.email" name="email" type="email" class="form-control" placeholder="Email" required />
+    </div>
+    <div class="col-md-2">
+      <button type="submit" class="btn btn-success w-100">Add Student</button>
+    </div>
+  </form>
+
+  <!-- Student List -->
+  <table class="table table-bordered table-striped table-hover shadow-sm">
+    <thead class="table-dark">
+      <tr>
+        <th>Name</th>
+        <th>Mobile No</th>
+        <th>Email</th>
+        <th class="text-center">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <td>{{ student.studentName }}</td>
+        <td>{{ student.MobileNo }}</td>
+        <td>{{ student.email }}</td>
+        <td class="text-center">
+          <button class="btn btn-warning btn-sm me-2" (click)="updateStudent(student)">Update</button>
+          <button class="btn btn-danger btn-sm" (click)="deleteStudent(student.StudentID)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
